@@ -1,0 +1,13 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =ClearCollect(ColConteudodosModulos2,'3 - Cadastro de conteúdo dos Módulos');
+        ClearCollect(ColCasdastroBootcamp2,'1 - Cadastro de Bootcamps');
+        ClearCollect(ColCadastrodeModulos2,'2 - Cadastro de Módulos');
+        ClearCollect(ColIntegracao,'4 - Integração Conteudo, Modulo e Bootcamp');
+        ClearCollect(Colmodulo,conteudo);
+        ClearCollect(Colbotcamps,Bootcamps);
+        
+        
+    StartScreen: =
+

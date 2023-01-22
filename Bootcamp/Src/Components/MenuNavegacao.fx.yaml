@@ -1,0 +1,42 @@
+MenuNavegacao As CanvasComponent:
+    Botões: |-
+        =Table({ICON: Icon.Add, NOME: "Adicionar", TELA: Edit})
+    Botoes1: |-
+        =Table({ICON: Icon.Add, NOME: "ADICIONAR", TELA: Edit})
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =100
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "Menu As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+        Height: =100
+        Items: =Botoes1
+        TemplatePadding: =0
+        TemplateSize: =134
+        Width: =MenuNavegacao.Width
+        ZIndex: =1
+
+        Image2 As image:
+            Height: =36
+            Image: =ThisItem.ICON
+            OnSelect: =Select(Parent)
+            Width: =49
+            Y: =35
+            ZIndex: =1
+
+        Title2 As label:
+            Height: =68
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleHeading
+            VerticalAlign: =VerticalAlign.Top
+            Width: =85
+            X: =49
+            Y: =19
+            ZIndex: =2
+

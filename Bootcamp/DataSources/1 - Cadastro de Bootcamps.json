@@ -1,0 +1,50 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2022-10-25T16:15:17.6680000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "{Attachments}": "Anexos",
+      "{Attachments}@odata.type": "{Attachments} ({Attachments}@odata.type)",
+      "{FilenameWithExtension}": "Nome de arquivo com extensão",
+      "{FullPath}": "Caminho Completo",
+      "{HasAttachments}": "Tem anexos",
+      "{Identifier}": "Identificador",
+      "{IsFolder}": "ÉPasta",
+      "{Link}": "Link para o item",
+      "{ModerationComment}": "Comentários associados à aprovação de conteúdo deste item de lista",
+      "{ModerationStatus}": "Status de aprovação de conteúdo",
+      "{Name}": "Nome",
+      "{Path}": "Caminho da pasta",
+      "{Thumbnail}": "Miniatura",
+      "{TriggerWindowEndToken}": "Token de Fim da Janela de Acionamento",
+      "{TriggerWindowStartToken}": "Token de Início da Janela de Acionamento",
+      "{VersionNumber}": "Número da versão",
+      "Author": "Criado por",
+      "Author#Claims": "Criado por Claims",
+      "ComplianceAssetId": "ID de Ativo de Conformidade",
+      "Created": "Criado",
+      "Criado_x0028_a_x0029_por": "Criado(a) por",
+      "DataFimInscri_x00e7__x00f5_es": "Data Fim Inscrições",
+      "Descri_x00e7__x00e3_oBootcamp": "Descrição Bootcamp",
+      "Editor": "Modificado por",
+      "Editor#Claims": "Modificado por Claims",
+      "HoraBootcamp": "Hora Criação/Modificação Bootcamp",
+      "ID": "ID",
+      "IDBootcamp": "ID Bootcamp",
+      "In_x00ed_cioInscri_x00e7__x00f5_": "Data Início Inscrições",
+      "Modified": "Modificado",
+      "Title": "Nome do Bootcamp",
+      "Vagas": "Vagas"
+    },
+    "DatasetName": "https://blueshiftcombr.sharepoint.com/sites/BluetCamp-FbricadeProjetos",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "1 - Cadastro de Bootcamps",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

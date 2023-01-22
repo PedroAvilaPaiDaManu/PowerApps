@@ -1,0 +1,368 @@
+Tela_adm As screen:
+    BackgroundImage: =
+    Fill: =RGBA(227, 234, 243, 1)
+    ImagePosition: =ImagePosition.Fill
+
+    Image4 As image:
+        Height: =595
+        Image: ='quadrado azul Inicio 2'
+        Width: =1302
+        X: =33
+        Y: =113
+        ZIndex: =1
+
+    Image1 As image:
+        Height: =140
+        Image: ='BluetCamp (1)'
+        Width: =637
+        X: =366
+        Y: =12
+        ZIndex: =2
+
+    Image3 As image:
+        Height: =112
+        Image: ='2_1'
+        Width: =118
+        X: =625
+        Y: =656
+        ZIndex: =15
+
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =17
+
+        alunos As icon.People:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.People
+            OnSelect: =Navigate(Tela_alunos)
+            Width: =129
+            X: =112
+            Y: =211
+            ZIndex: =13
+
+        Label3 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =32
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_alunos)
+            Size: =20
+            Text: ="Alunos"
+            Width: =162
+            X: =103
+            Y: =308
+            ZIndex: =14
+
+    Group2 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =18
+
+        bootcamps As icon.LevelsLayersItems:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.LevelsLayersItems
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Width: =129
+            X: =596
+            Y: =206
+            ZIndex: =11
+
+        Label3_1 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =37
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Size: =20
+            Text: ="Bootcamps"
+            Width: =205
+            X: =570
+            Y: =305
+            ZIndex: =12
+
+    Group3 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =19
+
+        graficos As icon.Trending:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.Trending
+            OnSelect: =Navigate(Tela_graficos)
+            Width: =129
+            X: =354
+            Y: =211
+            ZIndex: =9
+
+        Label3_2 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_graficos)
+            Size: =20
+            Text: ="Dashboard"
+            Width: =168
+            X: =334
+            Y: =305
+            ZIndex: =10
+
+    Group4 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =20
+
+        modulos As icon.AddLibrary:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.AddLibrary
+            OnSelect: =Navigate(Tela_Módulos)
+            Width: =129
+            X: =857
+            Y: =211
+            ZIndex: =7
+
+        Label3_3 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Módulos)
+            Size: =20
+            Text: ="Módulos"
+            Width: =160
+            X: =837
+            Y: =303
+            ZIndex: =8
+
+    Group7 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =20
+
+        Icon2_9 As icon.DocumentwithContent:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: |
+                =ColorFade(Self.Color, -150)
+            Icon: =Icon.DocumentWithContent
+            OnSelect: =Navigate(Tela_Relacionamento_Módulos_Conteudo)
+            Width: =129
+            X: =354
+            Y: =426
+            ZIndex: =18
+
+        Label3_7 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =95
+            HoverColor: |
+                =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Relacionamento_Módulos_Conteudo)
+            Size: =20
+            Text: ="Relacionamento Módulos com Conteúdos"
+            Width: =284
+            X: =283
+            Y: =528
+            ZIndex: =19
+
+    Image24 As image:
+        Height: =71
+        Image: =User().Image
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Width: =71
+        X: =1249
+        Y: =27
+        ZIndex: =21
+
+    Group6 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =21
+
+        atividades As icon.ListScrollWatchlist:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.ListScrollWatchlist
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Width: =129
+            X: =112
+            Y: =426
+            ZIndex: =5
+
+        Label3_4 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =44
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Size: =20
+            Text: ="Conteúdos"
+            Width: =202
+            X: =83
+            Y: =528
+            ZIndex: =6
+
+    Group8 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =21
+
+        Label3_6 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =95
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Size: =20
+            Text: ="Relacionamento Bootcamp com Módulos"
+            Width: =284
+            X: =1003
+            Y: =308
+            ZIndex: =17
+
+        Icon2 As icon.AddDocument:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.AddDocument
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Width: =129
+            X: =1077
+            Y: =211
+            ZIndex: =20
+
+    Label9 As label:
+        Align: =Align.Center
+        Size: =10
+        Text: =User().FullName
+        X: =1210
+        Y: =98
+        ZIndex: =22
+
+    Group5 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =22
+
+        provas As icon.DockCheckProperties:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =76
+            HoverColor: =ColorFade(Self.Color, -150)
+            Icon: =Icon.DockCheckProperties
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Width: =151
+            X: =1069
+            Y: =434
+            ZIndex: =3
+
+        Label3_5 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =36
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Size: =20
+            Text: ="Provas"
+            Width: =172
+            X: =1059
+            Y: =536
+            ZIndex: =4
+
+    Group12_12 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        Icon4_14 As icon.ColorPicker:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =Self.Fill
+            Icon: =Icon.ColorPicker
+            OnSelect: =Navigate(Tela_Avaliação)
+            Width: =112
+            X: =608
+            Y: =434
+            ZIndex: =23
+
+        Label13_12 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =53
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Avaliação)
+            Size: =20
+            Text: ="Avaliação"
+            X: =597
+            Y: =528
+            ZIndex: =24
+
+    Group14_12 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =27
+
+        Label14_12 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =95
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Size: =20
+            Text: ="Relacionamento Módulo com Avaliação"
+            Width: =284
+            X: =787
+            Y: =528
+            ZIndex: =25
+
+        Icon8_12 As icon.Notebook:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            HoverColor: =Self.Fill
+            Icon: =Icon.Notebook
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Width: =129
+            X: =857
+            Y: =434
+            ZIndex: =26
+

@@ -1,0 +1,45 @@
+{
+  "ComponentAllowCustomization": true,
+  "ComponentChangedSinceFileImport": true,
+  "ComponentManifest": {
+    "AllowAccessToGlobals": false,
+    "AllowCustomization": true,
+    "Description": "",
+    "Name": "MenuNavegacao",
+    "TemplateGuid": "80b1cd5e018243d79f6034e460985b26"
+  },
+  "ComponentType": "CanvasComponent",
+  "CustomGroupControlTemplateName": "",
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "Botões",
+      "Hidden": false,
+      "Name": "Botões",
+      "PropertyDataTypeKey": "Table",
+      "Tooltip": "Botões que vão aparecer no componente",
+      "Type": "{\"Version\":\"1.326\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"ICON\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"NOME\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"TELA\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Botoes1",
+      "Hidden": false,
+      "Name": "Botoes1",
+      "PropertyDataTypeKey": "Table",
+      "Tooltip": "Botoes 1 para acessar",
+      "Type": "{\"Version\":\"1.326\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Table\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"ICON\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"NOME\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"TELA\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}]}}"
+    }
+  ],
+  "FirstParty": true,
+  "Id": "http://microsoft.com/appmagic/Component",
+  "IsComponentLocked": false,
+  "IsComponentTemplate": true,
+  "IsCustomGroupControlTemplate": false,
+  "IsPcfControl": false,
+  "IsPremiumPcfControl": false,
+  "IsWidgetTemplate": false,
+  "LastModifiedTimestamp": "638099904402093239",
+  "Name": "80b1cd5e018243d79f6034e460985b26",
+  "OverridableProperties": {},
+  "Version": "638023288793431038"
+}

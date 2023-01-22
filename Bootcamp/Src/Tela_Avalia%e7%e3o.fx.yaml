@@ -1,0 +1,779 @@
+Tela_Avaliação As screen:
+    BackgroundImage: =
+    Fill: =RGBA(227, 234, 243, 1)
+    ImagePosition: =ImagePosition.Fill
+
+    Image14_1 As image:
+        Height: =728
+        Image: ='quadrado azul menu (1)'
+        Width: |-
+            =If( MenuAberto,
+                If(TamanhoDoMenuAberto > 0,
+                TamanhoDoMenuAberto,(Timer3_20.Value)),
+                
+                If(TamanhoDoMenuAberto = 0,
+                TamanhoDoMenuAberto, 262 - (Timer3_21.Value)))
+        Y: =24
+        ZIndex: =1
+
+    Image15_4 As image:
+        Height: =615
+        Image: ='quadrado azul Prova'
+        Width: =343
+        X: =303
+        Y: =106
+        ZIndex: =2
+
+    Image8_5 As image:
+        Height: =437
+        Image: ='quadrado azul Inicio 1'
+        Width: =683
+        X: =664
+        Y: =218
+        ZIndex: =3
+
+    Label7_4 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Height: =47
+        Size: =20
+        Text: ="Pesquisa"
+        Width: =130
+        X: =641
+        Y: =41
+        ZIndex: =4
+
+    Button7_49 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =EditForm(Formulario_cadastro_modulos_4)
+        Text: ="Editar"
+        Width: =200
+        X: =879
+        Y: =681
+        ZIndex: =5
+
+    Button7_50 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =ViewForm(Formulario_cadastro_modulos_4)
+        Text: ="Cancelar"
+        Width: =200
+        X: =1131
+        Y: =681
+        ZIndex: =6
+
+    Button7_48 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: |+
+            =SubmitForm(Formulario_cadastro_modulos_4);
+            Notify("Salvo com sucesso", NotificationType.Success);
+            Refresh(modulo_bootcamp);
+            
+        Text: ="Salvar"
+        Width: =200
+        X: =616
+        Y: =681
+        ZIndex: =7
+
+    Button7_47 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =NewForm(Formulario_cadastro_modulos_4)
+        Text: ="Nova Avaliação"
+        Width: =244
+        X: =317
+        Y: =681
+        ZIndex: =8
+
+    Timer3_24 As timer:
+        Duration: =262
+        OnTimerEnd: =Set(TamanhoDoMenuAberto,262); Reset(Timer3_24); 
+        OnTimerStart: |-
+            =UpdateContext({VerBotoes:true})
+        Start: =StartTimerMenu
+        Visible: =false
+        X: =617
+        ZIndex: =9
+
+    Timer3_25 As timer:
+        AutoStart: =true
+        Duration: =262
+        OnTimerEnd: |+
+            =Set(TamanhoDoMenuAberto,0); Reset(Timer3_25);
+            UpdateContext({VerBotoes:false})
+            
+        Start: =StartTimerMenu2
+        Visible: =false
+        X: =617
+        Y: =66
+        ZIndex: =10
+
+    Icon2_15 As icon.Hamburger:
+        DisabledBorderColor: =RGBA(20, 107, 237, 1)
+        Height: =52
+        HoverColor: =ColorFade(Self.Color, 150)
+        Icon: =Icon.Hamburger
+        OnSelect: |-
+            =UpdateContext({MenuAberto:!MenuAberto});If(MenuAberto = false, UpdateContext({StartTimerMenu2:false}) And UpdateContext({StartTimerMenu2:true}),UpdateContext({StartTimerMenu:false}) And UpdateContext({StartTimerMenu:true}))
+        PressedColor: =ColorFade(Self.Color, 150%)
+        Rotation: |-
+            =If( MenuAberto,
+                If(TamanhoDoMenuAberto > 0,
+                TamanhoDoMenuAberto - 172,(Timer3_24.Value - 172)),
+                
+                If(TamanhoDoMenuAberto = 0,
+                TamanhoDoMenuAberto, 90 - (Timer3_25.Value - 90)))
+        Width: =45
+        X: =24
+        Y: =36
+        ZIndex: =11
+
+    Image1_8 As image:
+        Height: =140
+        Image: ='BluetCamp (1)'
+        Width: =637
+        X: =406
+        Y: =16
+        ZIndex: =12
+
+    Label2_13 As label:
+        Color: =RGBA(227, 234, 243, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="MENU"
+        X: =112
+        Y: =40
+        ZIndex: =13
+
+    BuscaModulo_4 As text:
+        BorderThickness: =0
+        Default: =""
+        Height: =38
+        HintText: ="Buscar por módulo"
+        Width: =294
+        X: =320
+        Y: =250
+        ZIndex: =14
+
+    Formulario_cadastro_modulos_4 As form:
+        BorderColor: =RGBA(20, 107, 237, 1)
+        DataSource: =avaliacao
+        Height: =393
+        Item: =Gallery4.Selected
+        NumberOfColumns: =1
+        OnSuccess: |-
+            =ViewForm(Formulario_cadastro_modulos_4);
+            Notify("Operação Realizada com Sucesso", NotificationType.Success, 1000)
+        Width: =674
+        X: =662
+        Y: =262
+        ZIndex: =15
+
+        nome_avaliacao_DataCard2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="nome_avaliacao"
+            Default: =ThisItem.nome_avaliacao
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@avaliacao],DataSourceInfo.DisplayName,"nome_avaliacao")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@avaliacao], DataSourceInfo.MaxLength, "nome_avaliacao")
+            Required: =false
+            Update: =DataCardValue52.Text
+            Width: =674
+            X: =0
+            Y: =0
+            ZIndex: =16
+
+            DataCardKey52 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: |
+                    ="Nome da Avaliação"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue52 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey52.Y + DataCardKey52.Height + 5
+                ZIndex: =2
+
+            ErrorMessage43 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue52.Y + DataCardValue52.Height
+                ZIndex: =3
+
+            StarVisible43 As label:
+                Align: =Align.Center
+                Height: =DataCardKey52.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey52.Y
+                ZIndex: =4
+
+        ava_data_cad_DataCard1 As typedDataCard.dateEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ava_data_cad"
+            Default: =ThisItem.ava_data_cad
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@avaliacao],DataSourceInfo.DisplayName,"ava_data_cad")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue51.SelectedDate
+            Width: =674
+            X: =0
+            Y: =1
+            ZIndex: =16
+
+            DataCardKey51 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: ="Data de cadastro da avaliação"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue51 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                FontWeight: =FontWeight.Semibold
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey51.Y + DataCardKey51.Height + 5
+                ZIndex: =2
+
+            ErrorMessage42 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue51.Y + DataCardValue51.Height
+                ZIndex: =3
+
+            StarVisible42 As label:
+                Align: =Align.Center
+                Height: =DataCardKey51.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey51.Y
+                ZIndex: =4
+
+    Image10_17 As image:
+        Height: =71
+        Image: =buscador1
+        Width: =683
+        X: =664
+        Y: =183
+        ZIndex: =16
+
+    Label8_8 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =43
+        Size: =20
+        Text: ="PAINEL AVALIAÇÃO"
+        Width: =338
+        X: =810
+        Y: =187
+        ZIndex: =17
+
+    Label5_28 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =31
+        Size: =20
+        Text: ="AVALIAÇÃO"
+        Width: =172
+        X: =381
+        Y: =208
+        ZIndex: =19
+
+    Image3_12 As image:
+        Height: =112
+        Image: ='2_1'
+        Width: =118
+        X: =1229
+        Y: =24
+        ZIndex: =20
+
+    Container2_9 As groupContainer:
+        Height: =648
+        Visible: =VarPopDelMod
+        Width: =1332
+        X: =34
+        Y: =120
+        ZIndex: =21
+
+        Rectangle4_9 As rectangle:
+            Fill: =RGBA(227, 234, 243, 1)
+            Height: =606
+            Width: =1274
+            X: =40
+            Y: =20
+            ZIndex: =1
+
+        Label10_9 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =109
+            Size: =38
+            Text: ="Você tem certeza que quer excluir esse item?"
+            Width: =1212
+            X: =80
+            Y: =111
+            ZIndex: =2
+
+        Button7_45 As button:
+            Fill: =RGBA(20, 107, 237, 1)
+            Height: =92
+            OnSelect: |-
+                =Remove(modulos_10, Gallery6_2.Selected); UpdateContext({VarPopDelMod:false}); Notify("Excluído com sucesso",NotificationType.Success, 1000)
+            Size: =30
+            Text: ="SIM"
+            Width: =227
+            X: =198
+            Y: =348
+            ZIndex: =3
+
+        Button7_46 As button:
+            Fill: =RGBA(20, 107, 237, 1)
+            Height: =92
+            OnSelect: |-
+                =UpdateContext({VarPopDelMod:false})
+            Size: =30
+            Text: ="NÃO"
+            Width: =227
+            X: =810
+            Y: =348
+            ZIndex: =4
+
+        Icon1_10 As icon.Cancel:
+            Color: =RGBA(0, 0, 0, 1)
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPopDelMod:false})
+            X: =1208
+            Y: =59
+            ZIndex: =5
+
+    "Gallery4 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+        Height: =277
+        Items: =Filter(avaliacao, StartsWith(nome_avaliacao, BuscaModulo_4.Text))
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =88
+        Width: =300
+        X: =320
+        Y: =322
+        ZIndex: =40
+
+        Title9 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =69
+            HoverColor: =ColorFade(Self.Color, -150%)
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =ThisItem.nome_avaliacao
+            VerticalAlign: =VerticalAlign.Top
+            Width: =280
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Separator8 As rectangle:
+            Height: =0
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =3
+
+    Group9_22 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =59
+
+        Icon4_23 As icon.Home:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.Home
+            OnSelect: =Navigate(Tela_adm)
+            Width: =46
+            X: =12
+            Y: =115
+            ZIndex: =53
+
+        Label5_40 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_adm)
+            Text: ="Home"
+            X: =69
+            Y: =108
+            ZIndex: =56
+
+    Group10_22 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =61
+
+        Icon6_22 As icon.AddDocument:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.AddDocument
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Width: =46
+            X: =12
+            Y: =381
+            ZIndex: =55
+
+        Label11_22 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Text: ="Relacionamento Bootcamp/ Módulo"
+            Width: =170
+            X: =69
+            Y: =361
+            ZIndex: =57
+
+    Group11_22 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =63
+
+        Icon5_22 As icon.DocumentwithContent:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.DocumentWithContent
+            OnSelect: =Navigate(Tela_Relacionamento_Módulos_Conteudo)
+            Width: =46
+            X: =12
+            Y: =493
+            ZIndex: =54
+
+        Label12_22 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Módulos_Conteudo)
+            Text: ="Relacionamento Módulo/ Conteúdo"
+            Width: =170
+            X: =69
+            Y: =477
+            ZIndex: =58
+
+    Group12_7 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =64
+
+        Icon4_13 As icon.ColorPicker:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.ColorPicker
+            OnSelect: =Navigate(Tela_Avaliação)
+            Width: =46
+            X: =12
+            Y: =556
+            ZIndex: =60
+
+        Label13_7 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Avaliação)
+            Text: ="Avaliação"
+            X: =69
+            Y: =549
+            ZIndex: =62
+
+    Group1_34 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =65
+
+        alunos_34 As icon.People:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.People
+            OnSelect: =Navigate(Tela_alunos)
+            Width: =46
+            X: =12
+            Y: =171
+            ZIndex: =41
+
+        Label3_199 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =47
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_alunos)
+            Text: ="Alunos"
+            Width: =183
+            X: =69
+            Y: =162
+            ZIndex: =42
+
+    Group2_33 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =67
+
+        bootcamps_33 As icon.LevelsLayersItems:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.LevelsLayersItems
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Width: =46
+            X: =12
+            Y: =268
+            ZIndex: =43
+
+        Label3_200 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Text: ="Bootcamps"
+            Width: =187
+            X: =69
+            Y: =255
+            ZIndex: =44
+
+    Group3_33 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =69
+
+        graficos_33 As icon.Trending:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.Trending
+            OnSelect: =Navigate(Tela_graficos)
+            Width: =46
+            X: =12
+            Y: =215
+            ZIndex: =45
+
+        Label3_201 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_graficos)
+            Text: ="Dashboard"
+            Width: =165
+            X: =69
+            Y: =208
+            ZIndex: =46
+
+    Group14_7 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =70
+
+        Label14_7 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =65
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Text: ="Relacionamento Módulo/ Avaliação"
+            Width: =170
+            X: =69
+            Y: =600
+            ZIndex: =66
+
+        Icon8_7 As icon.Notebook:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =26
+            HoverColor: =Self.Fill
+            Icon: =Icon.Notebook
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Width: =46
+            X: =12
+            Y: =620
+            ZIndex: =68
+
+    Group4_33 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =71
+
+        modulos_36 As icon.AddLibrary:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.AddLibrary
+            OnSelect: =Navigate(Tela_Módulos)
+            Width: =46
+            X: =12
+            Y: =322
+            ZIndex: =47
+
+        Label3_202 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =53
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Módulos)
+            Text: ="Módulos"
+            Width: =189
+            X: =69
+            Y: =309
+            ZIndex: =48
+
+    Group5_33 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =72
+
+        provas_33 As icon.DockCheckProperties:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.DockCheckProperties
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Width: =46
+            X: =12
+            Y: =678
+            ZIndex: =49
+
+        Label3_203 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Text: ="Provas"
+            Width: =185
+            X: =69
+            Y: =674
+            ZIndex: =50
+
+    Group6_33 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =73
+
+        atividades_33 As icon.ListScrollWatchlist:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =27
+            HoverColor: =Self.Fill
+            Icon: =Icon.ListScrollWatchlist
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Width: =46
+            X: =12
+            Y: =440
+            ZIndex: =51
+
+        Label3_204 As label:
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =46
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Text: ="Conteúdos"
+            Width: =188
+            X: =69
+            Y: =431
+            ZIndex: =52
+

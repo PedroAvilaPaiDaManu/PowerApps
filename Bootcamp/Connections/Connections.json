@@ -1,0 +1,158 @@
+{
+  "82adad44-8944-491a-a97e-b61b242a5221": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1610-greyhound-localization-RelayFix/1.0.1610.3091/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://blueshiftcombr.sharepoint.com/sites/BluetCamp-FbricadeProjetos": {
+        "dataSources": {
+          "1 - Cadastro de Bootcamps": {
+            "tableName": "2668cd0b-d6d4-4049-9a42-1b45b023127d"
+          },
+          "2 - Cadastro de Módulos": {
+            "tableName": "e335c9f8-1898-4987-bf75-e68fbb2d6f85"
+          },
+          "3 - Cadastro de conteúdo dos Módulos": {
+            "tableName": "3f62fd68-002b-40d3-942f-156ef55d2324"
+          },
+          "4 - Integração Conteudo, Modulo e Bootcamp": {
+            "tableName": "4122547e-303c-4127-b670-531a2d1b3f4c"
+          },
+          "avaliacao": {
+            "tableName": "e92053c2-e29d-48ed-8e00-81917df67823"
+          },
+          "avaliacao_1": {
+            "tableName": "e92053c2-e29d-48ed-8e00-81917df67823"
+          },
+          "Bootcamps": {
+            "tableName": "9281cfa4-eda3-455f-93c5-5504e557c715"
+          },
+          "conteudo": {
+            "tableName": "f1b4a0d2-0209-469d-b98a-5f6f9c6ca59f"
+          },
+          "Conteúdo das provas - Teste Eryko": {
+            "tableName": "d883fdd2-53e6-4f1c-b6b3-59f4486c5b80"
+          },
+          "conteudo_modulo": {
+            "tableName": "47b69d77-c6ff-472a-9174-4cbabd913672"
+          },
+          "conteudo_modulo_1": {
+            "tableName": "47b69d77-c6ff-472a-9174-4cbabd913672"
+          },
+          "conteudo_modulo_2": {
+            "tableName": "47b69d77-c6ff-472a-9174-4cbabd913672"
+          },
+          "Imagens do BlueCamp": {
+            "tableName": "b53df168-3415-43b6-9b43-e9faafe1645e"
+          },
+          "Lista_de_Cadastro_BluetCamp": {
+            "tableName": "2392cf05-882d-434d-9b91-63164dd36499"
+          },
+          "Lista_de_Cadastro_BluetCamp_60_mais": {
+            "tableName": "2392cf05-882d-434d-9b91-63164dd36499"
+          },
+          "Lista_de_Cadastro_BluetCamp_60_mais_1": {
+            "tableName": "2392cf05-882d-434d-9b91-63164dd36499"
+          },
+          "Lista_de_Cadastro_BluetCamp_60_mais_2": {
+            "tableName": "2392cf05-882d-434d-9b91-63164dd36499"
+          },
+          "modulo_avaliacao": {
+            "tableName": "b0a88670-e8be-463e-9a90-6a9c3984a7ad"
+          },
+          "modulo_bootcamp": {
+            "tableName": "221b1bf5-3a2e-4321-aa8a-eb3b0246d24f"
+          },
+          "modulos_1": {
+            "tableName": "52b1d0cb-b42c-47f3-94f9-9efb59c0960e"
+          },
+          "modulos_10": {
+            "tableName": "52b1d0cb-b42c-47f3-94f9-9efb59c0960e"
+          },
+          "modulos_11": {
+            "tableName": "52b1d0cb-b42c-47f3-94f9-9efb59c0960e"
+          },
+          "modulos_2": {
+            "tableName": "52b1d0cb-b42c-47f3-94f9-9efb59c0960e"
+          },
+          "modulos_5": {
+            "tableName": "52b1d0cb-b42c-47f3-94f9-9efb59c0960e"
+          },
+          "opcoes_questao": {
+            "tableName": "43fe5c77-ef05-43e9-bd97-6ac8d4cc9e18"
+          },
+          "questoes_avaliacao": {
+            "tableName": "fb841ef5-4a48-4469-b3f8-6383ed5f7041"
+          },
+          "questoes_avaliacao_1": {
+            "tableName": "fb841ef5-4a48-4469-b3f8-6383ed5f7041"
+          },
+          "Questoes_e_opcoes_resposta": {
+            "tableName": "fcd9ec93-3c93-472f-bf75-36a481d89d8f"
+          },
+          "Questoes_e_opcoes_resposta_1": {
+            "tableName": "fcd9ec93-3c93-472f-bf75-36a481d89d8f"
+          },
+          "Questoes_e_opcoes_resposta_2": {
+            "tableName": "fcd9ec93-3c93-472f-bf75-36a481d89d8f"
+          }
+        }
+      },
+      "https://blueshiftcombr.sharepoint.com/sites/Teste_pedro": {
+        "dataSources": {
+          "Documentos": {
+            "tableName": "2d33b115-36c6-4217-a29f-777742d96847"
+          },
+          "Teste_pedro_modulos": {
+            "tableName": "f1cabf91-f288-4ad5-9e4c-fdcd3e6c0dd5"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Teste_pedro_modulos",
+      "Documentos",
+      "1 - Cadastro de Bootcamps",
+      "2 - Cadastro de Módulos",
+      "3 - Cadastro de conteúdo dos Módulos",
+      "4 - Integração Conteudo, Modulo e Bootcamp",
+      "Lista_de_Cadastro_BluetCamp",
+      "Imagens do BlueCamp",
+      "Conteúdo das provas - Teste Eryko",
+      "Bootcamps",
+      "modulos_10",
+      "modulos_11",
+      "questoes_avaliacao",
+      "questoes_avaliacao_1",
+      "conteudo",
+      "opcoes_questao",
+      "Questoes_e_opcoes_resposta",
+      "modulo_bootcamp",
+      "modulos_5",
+      "conteudo_modulo",
+      "Lista_de_Cadastro_BluetCamp_60_mais",
+      "Lista_de_Cadastro_BluetCamp_60_mais_1",
+      "Lista_de_Cadastro_BluetCamp_60_mais_2",
+      "Questoes_e_opcoes_resposta_1",
+      "Questoes_e_opcoes_resposta_2",
+      "avaliacao",
+      "modulo_avaliacao",
+      "modulos_1",
+      "modulos_2",
+      "conteudo_modulo_1",
+      "conteudo_modulo_2",
+      "avaliacao_1"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "82adad44-8944-491a-a97e-b61b242a5221"
+  }
+}

@@ -1,0 +1,1319 @@
+Tela_teste_Layout As screen:
+    BackgroundImage: =
+    Fill: =RGBA(227, 234, 243, 1)
+    ImagePosition: =ImagePosition.Fill
+
+    Image10 As image:
+        Height: =768
+        Image: ='quadrado azul menu (1)'
+        Width: |-
+            =If( MenuAberto,
+                If(TamanhoDoMenuAberto > 0,
+                TamanhoDoMenuAberto,(Timer3_20.Value)),
+                
+                If(TamanhoDoMenuAberto = 0,
+                TamanhoDoMenuAberto, 262 - (Timer3_21.Value)))
+                
+        ZIndex: =1
+
+    Image8_4 As image:
+        Height: =662
+        Image: ='quadrado azul Inicio 1'
+        Width: =744
+        X: =597
+        Y: =106
+        ZIndex: =2
+
+    Timer3_20 As timer:
+        Duration: =262
+        OnTimerEnd: =Set(TamanhoDoMenuAberto,262); Reset(Timer3_20); 
+        OnTimerStart: |-
+            =UpdateContext({VerBotoes:true})
+        Start: =StartTimerMenu
+        Visible: =false
+        X: =617
+        ZIndex: =3
+
+    Timer3_21 As timer:
+        AutoStart: =true
+        Duration: =262
+        OnTimerEnd: |+
+            =Set(TamanhoDoMenuAberto,0); Reset(Timer3_21);
+            UpdateContext({VerBotoes:false})
+            
+        Start: =StartTimerMenu2
+        Visible: =false
+        X: =617
+        Y: =66
+        ZIndex: =4
+
+    Icon2_11 As icon.Hamburger:
+        DisabledBorderColor: =RGBA(20, 107, 237, 1)
+        DisabledColor: =RGBA(20, 107, 237, 1)
+        Height: =52
+        HoverColor: =ColorFade(Self.Color, 150%)
+        Icon: =Icon.Hamburger
+        OnSelect: |-
+            =UpdateContext({MenuAberto:!MenuAberto});If(MenuAberto = false, UpdateContext({StartTimerMenu2:false}) And UpdateContext({StartTimerMenu2:true}),UpdateContext({StartTimerMenu:false}) And UpdateContext({StartTimerMenu:true}));
+        PressedColor: =ColorFade(Self.Color, 150)
+        Rotation: |-
+            =If( MenuAberto,
+                If(TamanhoDoMenuAberto > 0,
+                TamanhoDoMenuAberto - 172,(Timer3_20.Value - 172)),
+                
+                If(TamanhoDoMenuAberto = 0,
+                TamanhoDoMenuAberto, 90 - (Timer3_21.Value - 90)))
+        Width: =45
+        X: =24
+        Y: =36
+        ZIndex: =5
+
+    Button2_13 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =NewForm(Formulario_cadastro_bootcamps_1);
+        Text: ="Novo BootCamp"
+        Width: =174
+        X: =319
+        Y: =680
+        ZIndex: =6
+
+    Button2_19 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =SubmitForm(Formulario_cadastro_bootcamps_1);
+        Text: ="Salvar"
+        X: =524
+        Y: =680
+        ZIndex: =7
+
+    Button2_24 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =EditForm(Formulario_cadastro_bootcamps_1);
+        Text: ="Editar"
+        X: =718
+        Y: =680
+        ZIndex: =8
+
+    Button2_25 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: =ViewForm(Formulario_cadastro_bootcamps_1);
+        Text: ="Cancelar"
+        X: =913
+        Y: =680
+        ZIndex: =9
+
+    Image5_6 As image:
+        Height: =479
+        Image: ='quadrado azul Prova1'
+        Width: =285
+        X: =307
+        Y: =169
+        ZIndex: =22
+
+    Buscar_Bootcamps_2 As text:
+        BorderThickness: =0
+        Default: =""
+        Height: =39
+        HintText: ="Buscar"
+        Width: =236
+        X: =327
+        Y: =231
+        ZIndex: =23
+
+    Label5_20 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =42
+        Size: =20
+        Text: ="BOOTCAMP"
+        Width: =174
+        X: =352
+        Y: =177
+        ZIndex: =24
+
+    Formulario_cadastro_bootcamps_1 As form:
+        BorderColor: =RGBA(20, 107, 237, 1)
+        DataSource: =Bootcamps
+        DefaultMode: =FormMode.View
+        Height: =389
+        Item: =Galeria_Bootcamp_1.Selected
+        NumberOfColumns: =2
+        OnSuccess: |-
+            =ViewForm(Formulario_cadastro_bootcamps_1);
+            Notify("Operação Realizada com Sucesso", NotificationType.Success, 1000)
+        Width: =710
+        X: =603
+        Y: =235
+        ZIndex: =25
+
+        titulo_DataCard1_1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="titulo"
+            Default: =ThisItem.Título
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"titulo")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@Bootcamps], DataSourceInfo.MaxLength, "titulo")
+            Required: =true
+            Update: =DataCardValue3_1.Text
+            Width: =355
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey3_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue3_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HintText: ="Coloque o título do Bootcamp"
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey3_1.Y + DataCardKey3_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage3_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3_1.Y + DataCardValue3_1.Height
+                ZIndex: =3
+
+            StarVisible3_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3_1.Y
+                ZIndex: =4
+
+        descrição_DataCard1_1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="especifico"
+            Default: =ThisItem.Descrição
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"especifico")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@Bootcamps], DataSourceInfo.MaxLength, "especifico")
+            Required: =true
+            Update: =DataCardValue4_1.Text
+            Width: =355
+            X: =1
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey4_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue4_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HintText: ="Descrição adicional do Bootcamp"
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey4_1.Y + DataCardKey4_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue4_1.Y + DataCardValue4_1.Height
+                ZIndex: =3
+
+            StarVisible4_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4_1.Y
+                ZIndex: =4
+
+        categoria_DataCard2_1 As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="categoria"
+            Default: =ThisItem.Categoria
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"categoria")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue5_1.Selected
+            Width: =355
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey5_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue5_1 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                ChevronBackground: =RGBA(20, 107, 237, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HoverFill: =RGBA(255, 255, 255, 1)
+                InputTextPlaceholder: ="Em qual Categoria o Bootcamp se encontra"
+                Items: =Choices([@Bootcamps].Categoria)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(Bootcamps.Categoria,DataCardValue5_1.SearchText)
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey5_1.Y + DataCardKey5_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage5_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue5_1.Y + DataCardValue5_1.Height
+                ZIndex: =3
+
+            StarVisible5_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey5_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey5_1.Y
+                ZIndex: =4
+
+        vagas_disponiveis_DataCard1_1 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="vagas_disponiveis"
+            Default: =ThisItem.'Vagas Disponíveis'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"vagas_disponiveis")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Value(DataCardValue6_1.Text)
+            Width: =355
+            X: =1
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey6_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue6_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                Format: =TextFormat.Number
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey6_1.Y + DataCardKey6_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage6_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue6_1.Y + DataCardValue6_1.Height
+                ZIndex: =3
+
+            StarVisible6_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey6_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey6_1.Y
+                ZIndex: =4
+
+        data_cadastro_DataCard1_1 As typedDataCard.dateEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="data_cadastro"
+            Default: =ThisItem.'Data Cadastro'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"data_cadastro")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue7_1.SelectedDate
+            Width: =355
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey7_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7_1 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                DefaultDate: =Now()
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                FontWeight: =FontWeight.Semibold
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7_1.Y + DataCardKey7_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage7_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7_1.Y + DataCardValue7_1.Height
+                ZIndex: =3
+
+            StarVisible7_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7_1.Y
+                ZIndex: =4
+
+        data_evento_DataCard1_1 As typedDataCard.dateEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="data_evento"
+            Default: =ThisItem.'Data Evento'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"data_evento")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue8_1.SelectedDate
+            Width: =355
+            X: =1
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey8_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue8_1 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                FontWeight: =FontWeight.Semibold
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey8_1.Y + DataCardKey8_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue8_1.Y + DataCardValue8_1.Height
+                ZIndex: =3
+
+            StarVisible8_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey8_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey8_1.Y
+                ZIndex: =4
+
+        link_interesse_DataCard1_1 As typedDataCard.urlEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="link_interesse"
+            Default: =ThisItem.'Link Interesse'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"link_interesse")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue9_1.Text
+            Width: =355
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey9_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue9_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HintText: ="Link do Formulário de Interesse"
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey9_1.Y + DataCardKey9_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage9_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue9_1.Y + DataCardValue9_1.Height
+                ZIndex: =3
+
+            StarVisible9_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey9_1.Y
+                ZIndex: =4
+
+        publicado_DataCard1_1 As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="publicado"
+            Default: =ThisItem.Publicado
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"publicado")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue10_1.Selected
+            Width: =355
+            X: =1
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey10_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue10_1 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                ChevronBackground: =RGBA(20, 107, 237, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HoverFill: =RGBA(255, 255, 255, 1)
+                InputTextPlaceholder: ="O Bootcamp já foi publicado no site?"
+                Items: =Choices([@Bootcamps].Publicado)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(Bootcamps.Publicado,DataCardValue10_1.SearchText)
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey10_1.Y + DataCardKey10_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage10_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue10_1.Y + DataCardValue10_1.Height
+                ZIndex: =3
+
+            StarVisible10_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey10_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey10_1.Y
+                ZIndex: =4
+
+        referencia_DataCard1_1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="referencia"
+            Default: =ThisItem.'Pessoa de Referência'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"referencia")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@Bootcamps], DataSourceInfo.MaxLength, "referencia")
+            Required: =false
+            Update: =DataCardValue11_1.Text
+            Width: =355
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey11_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue11_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                HintText: ="Pessoa responsável pelo Bootcamp"
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey11_1.Y + DataCardKey11_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage11_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue11_1.Y + DataCardValue11_1.Height
+                ZIndex: =3
+
+            StarVisible11_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey11_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey11_1.Y
+                ZIndex: =4
+
+        thumb_DataCard1_1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="thumb"
+            Default: =ThisItem.'Miniatura (thumb)'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Bootcamps],DataSourceInfo.DisplayName,"thumb")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@Bootcamps], DataSourceInfo.MaxLength, "thumb")
+            Required: =true
+            Update: =DataCardValue1_1.Text
+            Width: =355
+            X: =1
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey1_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(20, 107, 237, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =15
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1_1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =1
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                FontWeight: =FontWeight.Semibold
+                Height: =38
+                HintText: ="Link da imagem em miniatura do Bootcamp"
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey1_1.Y + DataCardKey1_1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1_1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1_1.Y + DataCardValue1_1.Height
+                ZIndex: =3
+
+            StarVisible1_1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey1_1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1_1.Y
+                ZIndex: =4
+
+    Image10_4 As image:
+        Height: =121
+        Image: =buscador1
+        Width: =738
+        X: =603
+        Y: =139
+        ZIndex: =26
+
+    Label5_19 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =47
+        Size: =20
+        Text: ="PAINEL BOOTCAMP"
+        Width: =697
+        X: =609
+        Y: =160
+        ZIndex: =27
+
+    "Galeria_Bootcamp_1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+        Height: =347
+        Items: =Filter(Bootcamps, StartsWith(Título, Buscar_Bootcamps_2.Text))
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =102
+        Width: =244
+        X: =319
+        Y: =277
+        ZIndex: =28
+
+        Title4_1 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            HoverColor: =ColorFade(Self.Color, -150)
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Título
+            VerticalAlign: =VerticalAlign.Top
+            Width: =204
+            X: =18
+            Y: =18
+            ZIndex: =1
+
+        Separator3_1 As rectangle:
+            Height: =0
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =3
+
+    Button2_26 As button:
+        Fill: =RGBA(20, 107, 237, 1)
+        Height: =34
+        OnSelect: |-
+            =UpdateContext({VarPopDel: true})
+        Text: ="Excluir BootCamp"
+        Width: =211
+        X: =1116
+        Y: =680
+        ZIndex: =29
+
+    Image3_10 As image:
+        Height: =112
+        Image: ='2_1'
+        Width: =118
+        X: =1230
+        Y: =16
+        ZIndex: =30
+
+    Label6_3 As label:
+        Color: =RGBA(227, 234, 243, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="MENU"
+        X: =91
+        Y: =42
+        ZIndex: =31
+
+    Container_confirmação_exclusão_Bootcamp_1 As groupContainer:
+        Height: =648
+        Visible: =VarPopDel
+        Width: =1332
+        X: =34
+        Y: =106
+        ZIndex: =32
+
+        imagem_fundo_containter_bootcamp_1 As rectangle:
+            Fill: =RGBA(227, 234, 243, 1)
+            Height: =606
+            Width: =1274
+            X: =40
+            Y: =20
+            ZIndex: =1
+
+        Rotulo_Texto_Confirmar_Exclusão_1 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =109
+            Size: =38
+            Text: ="Você tem certeza que quer excluir esse item?"
+            Width: =1212
+            X: =80
+            Y: =111
+            ZIndex: =2
+
+        Button_sim_bootcamp_1 As button:
+            Fill: =RGBA(20, 107, 237, 1)
+            Height: =92
+            OnSelect: |-
+                =Remove(Bootcamps, Galeria_Bootcamp_1.Selected); UpdateContext({VarPopDel:false}); Notify("Excluído com sucesso",NotificationType.Success, 1000)
+            Size: =30
+            Text: ="SIM"
+            Width: =227
+            X: =198
+            Y: =348
+            ZIndex: =3
+
+        Button_não_bootcamp_1 As button:
+            Fill: =RGBA(20, 107, 237, 1)
+            Height: =92
+            OnSelect: |-
+                =UpdateContext({VarPopDel: false})
+            Size: =30
+            Text: ="NÃO"
+            Width: =227
+            X: =810
+            Y: =348
+            ZIndex: =4
+
+        Icon1_8 As icon.Cancel:
+            Color: =RGBA(0, 0, 0, 1)
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPopDel: false})
+            X: =1208
+            Y: =59
+            ZIndex: =5
+
+    logo_BluetCamp_1 As image:
+        Height: =140
+        Image: ='BluetCamp (1)'
+        Width: =637
+        X: =411
+        Y: =16
+        ZIndex: =33
+
+    Group9 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =38
+
+        Icon4_1 As icon.Home:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.Home
+            OnSelect: =Navigate(Tela_adm)
+            Width: =50
+            X: =12
+            Y: =115
+            ZIndex: =34
+
+        Label5 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_adm)
+            Size: =15
+            Text: ="Home"
+            X: =69
+            Y: =113
+            ZIndex: =37
+
+    Group10 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =39
+
+        Icon6 As icon.AddDocument:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.AddDocument
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Width: =50
+            X: =12
+            Y: =564
+            ZIndex: =36
+
+        Label11 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =77
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Bootcamps_Módulos)
+            Size: =14
+            Text: ="Relacionamento Bootcamp/ Módulo"
+            Width: =183
+            X: =62
+            Y: =543
+            ZIndex: =38
+
+    Group11 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =40
+
+        Icon5 As icon.DocumentwithContent:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.DocumentWithContent
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Width: =50
+            X: =12
+            Y: =658
+            ZIndex: =35
+
+        Label12 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =68
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Relacionamento_Avaliação_Módulo)
+            Size: =14
+            Text: ="Relacionamento Módulo/ Conteúdo"
+            Width: =179
+            X: =59
+            Y: =641
+            ZIndex: =39
+
+    Group1_12 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =59
+
+        alunos_12 As icon.People:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.People
+            OnSelect: =Navigate(Tela_alunos)
+            Width: =50
+            X: =12
+            Y: =173
+            ZIndex: =10
+
+        Label3_67 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =47
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_alunos)
+            Size: =15
+            Text: ="Alunos"
+            Width: =183
+            X: =49
+            Y: =176
+            ZIndex: =11
+
+    Group2_11 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =61
+
+        bootcamps_11 As icon.LevelsLayersItems:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.LevelsLayersItems
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Width: =50
+            X: =12
+            Y: =227
+            ZIndex: =12
+
+        Label3_68 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Bootcamps)
+            Size: =15
+            Text: ="Bootcamps"
+            Width: =187
+            X: =49
+            Y: =223
+            ZIndex: =13
+
+    Group3_11 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =63
+
+        graficos_11 As icon.Trending:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.Trending
+            OnSelect: =Navigate(Tela_graficos)
+            Width: =50
+            X: =12
+            Y: =281
+            ZIndex: =14
+
+        Label3_69 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_graficos)
+            Size: =15
+            Text: ="Dashboard"
+            Width: =165
+            X: =69
+            Y: =281
+            ZIndex: =15
+
+    Group4_11 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =65
+
+        modulos_14 As icon.AddLibrary:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.AddLibrary
+            OnSelect: =Navigate(Tela_Módulos)
+            Width: =50
+            X: =10
+            Y: =349
+            ZIndex: =16
+
+        Label3_70 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =53
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Módulos)
+            Size: =15
+            Text: ="Módulos"
+            Width: =189
+            X: =47
+            Y: =347
+            ZIndex: =17
+
+    Group5_11 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =67
+
+        provas_11 As icon.DockCheckProperties:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.DockCheckProperties
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Width: =50
+            X: =12
+            Y: =418
+            ZIndex: =18
+
+        Label3_71 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =54
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Provas_e_respostas)
+            Size: =15
+            Text: ="Provas"
+            Width: =185
+            X: =47
+            Y: =414
+            ZIndex: =19
+
+    Group6_11 As group:
+        Height: =5
+        Width: =5
+        X: =-192
+        Y: =-145
+        ZIndex: =69
+
+        atividades_11 As icon.ListScrollWatchlist:
+            Color: =RGBA(227, 234, 243, 1)
+            Height: =35
+            HoverColor: =Self.Fill
+            Icon: =Icon.ListScrollWatchlist
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Width: =50
+            X: =12
+            Y: =479
+            ZIndex: =20
+
+        Label3_72 As label:
+            Align: =Align.Center
+            Color: =RGBA(227, 234, 243, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =54
+            HoverColor: =Self.Fill
+            OnSelect: =Navigate(Tela_Bootcamps_Conteúdo)
+            Size: =15
+            Text: ="Conteúdos"
+            Width: =188
+            X: =47
+            Y: =471
+            ZIndex: =21
+
